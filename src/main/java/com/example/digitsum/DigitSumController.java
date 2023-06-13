@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 @RestController
 public class DigitSumController {
+    int visitCounter = 0;
     @RequestMapping("/calc")
     public int calcDigitSum(@RequestParam int number) {
         //code inspired by: https://www.geeksforgeeks.org/java-program-for-sum-the-digits-of-a-given-number/
@@ -31,6 +32,12 @@ public class DigitSumController {
                 number /= 10;
             }
         }
+        visitCounter++;
         return sum;
+    }
+
+    @RequestMapping("/calc/counter")
+    public int getVisitCounter(){
+        return visitCounter;
     }
 }
